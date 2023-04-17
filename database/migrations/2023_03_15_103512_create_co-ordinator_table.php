@@ -16,7 +16,7 @@ return new class extends Migration
         $table->string('name',60);
         $table->string('department',30);
         $table->string('email',30);
-        $table->string('password',50);
+        $table->string('password',500);
         $table->string('contact_number',10);
         $table->string('created_by',60);
         $table->string('updated_by',60);

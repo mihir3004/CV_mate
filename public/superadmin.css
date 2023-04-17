@@ -40,7 +40,7 @@ a {
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    background-color: var(--white-color);
+    background-color: black;
     z-index: var(--z-fixed);
     transition: .5s
 }
@@ -172,6 +172,7 @@ a {
 
     .l-navbar {
         left: 0;
+    
         padding: 1rem 1rem 0 0
     }
 
@@ -186,3 +187,8 @@ a {
 .superadmin{
     color: white;
 }
+h2{
+    margin-left: 2em;
+    color: white;
+}
+

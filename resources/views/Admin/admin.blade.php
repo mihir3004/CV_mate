@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 
-    <script src="superadmin.js"></script>
+    <script src="/javascript/superadmin.js"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/5014f23600.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/5014f23600.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -22,6 +22,7 @@
         <div class="header_toggle">
             <i class="bx bx-menu" id="header-toggle"></i>
         </div>
+        <h2 id="logo">CV mate</h2>
         <div class="header_img">
             <img src="https://i.imgur.com/hczKIze.jpg" alt="" />
         </div>
@@ -29,41 +30,45 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <a href="#" class="nav_logo">
+                <a href="/htmlcode/superadmindashboard.html" class="nav_logo">
                     <i class="fa-solid fa-user-gear superadmin"></i>
-                    <span class="nav_logo-name">Super Admin</span>
+                    <span class="nav_logo-name">Admin</span>
                 </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link active">
+                    <a href="/htmlcode/superadmindashboard.html" class="nav_link active">
                         <i class="bx bx-grid-alt nav_icon"></i>
                         <span class="nav_name">Dashboard</span>
                     </a>
                     <a href="#" class="nav_link">
                         <i class="fa-solid fa-users superadmin"></i>
-                        <span class="nav_name">Drop Down</span>
+                        <span class="nav_name"> Co-ordinator list</span>
                     </a>
                     <a href="#" class="nav_link">
                         <i class="fa-solid fa-plus superadmin"></i>
-                        <span class="nav_name">Create Admin</span>
+                        <span class="nav_name">Create Co-ordinator</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="/htmlcode/editadmin.html" class="nav_link">
                         <i class="fa-solid fa-pen superadmin"></i>
-                        <span class="nav_name">Edit Admin</span>
+                        <span class="nav_name">Edit Co-ordinator</span>
                     </a>
                     <a href="#" class="nav_link">
                         <i class="fa-solid fa-ranking-star superadmin"></i>
                         <span class="nav_name">Leaderboard</span>
-                        <!-- </a>
-            <a href="#" class="nav_link">
-              <i class="bx bx-bar-chart-alt-2 nav_icon"></i>
-              <span class="nav_name">Stats</span>
-            </a> -->
-                        <!-- </div> -->
-                        <!-- </div> -->
-                        <a href="#" class="nav_link">
-                            <i class="fa-solid fa-right-from-bracket superadmin"></i>
-                            <span class="nav_name">SignOut</span>
-                        </a>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i class="fa-solid fa-user-graduate superadmin"></i>
+                        <span class="nav_name">Student View</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i class="fa-solid fa-building-user superadmin"></i>
+                        <span class="nav_name">Department</span>
+                    </a>
+                </div>
+                <!-- </div> -->
+                <a href="#" class="nav_link">
+                    <i class="fa-solid fa-right-from-bracket superadmin"></i>
+                    <span class="nav_name">SignOut</span>
+                </a>
         </nav>
     </div>
     <!--Container Main start-->

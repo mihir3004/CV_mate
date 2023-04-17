@@ -25,14 +25,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     /*===== LINK ACTIVE =====*/
     const linkColor = document.querySelectorAll('.nav_link')
+    console.log(window.location);
     
-    function colorLink(){
-    if(linkColor){
-    linkColor.forEach(l=> l.classList.remove('active'))
-    this.classList.add('active')
-    }
+    function colorLink(e){
+        if(linkColor){
+            linkColor.forEach(l=> l.classList.remove('active'))
+            this.classList.add('active')
+        }
     }
     linkColor.forEach(l=> l.addEventListener('click', colorLink))
-    
-     // Your code to run since DOM is loaded and ready
+    // e.preventdefault();
+    //  Your code to run since DOM is loaded and ready
     });
+
+//  function addclass(){
+    
+//     var d  = document.getElementById("new");
+//     d.className += " active";
+
+
+//  }
