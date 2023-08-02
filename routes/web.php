@@ -19,6 +19,9 @@ use App\Http\Controllers\students;
 */
 
 Route::get('/signup', [registration::class, 'signup']);
+Route::get('/', function(){
+    return redirect('/login');
+});
 Route::post('/register', [registration::class, 'valid'])->name('student.create');
 Route::get('/login', [registration::class, 'login'])->name('student.login');
 Route::post('/login', [registration::class, 'auth'])->name('student.auth');
