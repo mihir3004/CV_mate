@@ -9,6 +9,7 @@ use App\Models\Certificate;
 use App\Models\Project;
 use App\Models\Student;
 use App\Models\Friend;
+use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 // use Symfony\Component\HttpFoundation\Session\Session;
 // use Illuminate\Console\View\Components\Alert;
@@ -23,7 +24,7 @@ class admin extends Controller
         $count['student']=Student::where('status','Approved')->count();
         $data1=compact('count');
         
-        if (session('role')=='Admin') {
+        if (Session::has('role')=='Admin') {
             return view('Admin/admindashboard')->with($data1);
         }
         else{
@@ -32,7 +33,7 @@ class admin extends Controller
     }
     public function studentdetail($id)
     {
-        if (session('role')=='Admin') {
+        if (Session::has('role')=='Admin') {
             $student1=Student::find($id);
             if(is_null($student1))
             {
@@ -42,7 +43,7 @@ class admin extends Controller
             {
                 $student=Student::where('student_id',$id)->get()->toArray();
                
-                    // $enrollment=Student::where('department',session('department'))->get('enrollment')->toArray();
+                    // $enrollment=Student::where('department',Session::has('department'))->get('enrollment')->toArray();
                     $enrollment=Student::where('student_id',$id)->get('enrollment')->toArray();
                     $certificate=Certificate::wherein('enrollment',$enrollment)->where('status','Approved')->get()->toArray();
                     $project=Project::wherein('enrollment',$enrollment)->where('status','Approved')->get()->toArray();
@@ -68,16 +69,16 @@ class admin extends Controller
     }
     public function coordinatorlist()
     {
-        if(session('error'))
+        if(Session::has('error'))
         {
             Alert::info('Done!','Co-ordinator created successfully');
-            session()->forget('error');
+            Session::forget('error');
         }
         
-        if(session('departmenterror'))
+        if(Session::has('departmenterror'))
         {
             Alert::Warning('Alert!','Department Already exist!!');
-            session()->forget('departmenterror');
+            Session::forget('departmenterror');
         }
         
         
@@ -86,7 +87,7 @@ class admin extends Controller
         
                 $data2=compact('coordinator','i');
         
-            if (session('role')=='Admin') {
+            if (Session::has('role')=='Admin') {
             return view('Admin/coordinatorlist')->with($data2);
         }
         return redirect('/login');
@@ -94,14 +95,14 @@ class admin extends Controller
     public function createcoordinator()
     {
 
-        if (session('role')=='Admin') {
+        if (Session::has('role')=='Admin') {
             return view('Admin/createcoordinator');
         }
         return redirect('/login');
     }
     public function editcoordinator($id)
     {
-        if (session('role')=='Admin') {
+        if (Session::has('role')=='Admin') {
             $coordinator=Coordinator::find($id);
             // print_r($coordinator);
             // die();
@@ -119,7 +120,7 @@ class admin extends Controller
     }
      public function deletecoordinator($id)
      {
-         if (session('role')=='Admin') {
+         if (Session::has('role')=='Admin') {
             $coordinator=Coordinator::find($id);
             if(is_null($coordinator))
             {
@@ -139,7 +140,7 @@ class admin extends Controller
     }
     public function deletestudent($id)
     {
-    if (session('role')=='Admin') {
+    if (Session::has('role')=='Admin') {
     $student=Student::find($id);
     if(is_null($student))
     {
@@ -159,7 +160,7 @@ class admin extends Controller
     }
     public function studentview(Request $req)
     {
-        if (session('role')=='Admin') {
+        if (Session::has('role')=='Admin') {
             $search = $req['search'] ?? "";
             if($search != ""){
                 $student = Student::where('name','LIKE',"$search%")->orwhere('enrollment','LIKE',"$search%")->get();
@@ -175,7 +176,7 @@ class admin extends Controller
     }
     public function adminleader( Request $req)
     {
-        if (session('role')=='Admin') {
+        if (Session::has('role')=='Admin') {
             $search = $req['search'] ?? "";
             if($search != ""){
                 $student1 = Student::where('name','LIKE',"$search%")->orwhere('enrollment','LIKE',"$search%")->orderby('point','DESC')->get();
@@ -197,7 +198,7 @@ class admin extends Controller
         $coordinator = Coordinator::get()->toArray();
         for ($i = 0; $i < Coordinator::count(); $i++) {
             if ($coordinator[$i]['department'] == $req->Department) {
-                session()->put('departmenterror','1');
+                Session::put('departmenterror','1');
                 $count=1;
             }
         }
@@ -212,7 +213,7 @@ class admin extends Controller
                 $coordinator1->updated_by = 'Admin';
                 $coordinator1->created_by = 'Admin';
                 $coordinator1->save();
-                session()->put('error','co-ordinator has been created.');
+                Session::put('error','co-ordinator has been created.');
                 
             }
         } 
@@ -220,7 +221,7 @@ class admin extends Controller
     }
     public function updatecoordinator($id,Request $req)
     {
-        if (session('role')=='Admin') {
+        if (Session::has('role')=='Admin') {
         $coordinator=Coordinator::find($id);
          $coordinator->department = $req['Department'];
          $coordinator->name = $req['Co-ordinator'];

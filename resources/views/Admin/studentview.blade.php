@@ -19,14 +19,14 @@
 @include('Admin/header')
 <body id="body-pd">
    
-    <!--Container Main start-->
+    {{-- <!--Container Main start-->
     <nav class="navbar navbar-light bg-white">
-        <form class="form-inline">
+        {{-- <form class="form-inline">
             <input class="form-control mr-sm-" name="search" value="{{ $search }}" type="search"
                 placeholder="Search by Name or Enrollment" aria-label="Search">
             <button class="btn btn-outline-success my-4 my-sm-0 button" type="submit">Search</button>
-        </form>
-    </nav>
+        </form> --}}
+    {{-- </nav> --}}
     <div class="table">
         <table class="table table-striped">
             <thead>

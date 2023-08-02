@@ -14,6 +14,8 @@
     <script src="/superadmin.js"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/5014f23600.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/5014f23600.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <title>Admin | LeaderBoard</title>
 </head>
 
@@ -29,11 +31,11 @@
             <button class="btn btn-outline-success my-4 my-sm-0 button" type="submit">Search</button>
         </form>
     </nav> --}}
-    <form class="form-inline">
+    {{-- <form class="form-inline">
         <input class="form-control mr-sm-" name="search" value="{{$search}}" type="search"
             placeholder="Search by Name or Enrollment" aria-label="Search">
         <button class="btn btn-outline-success my-4 my-sm-0 button" type="submit">Search</button>
-    </form>
+    </form> --}}
     {{-- <div class="top-button mr-1 ">
         <button class="btn btn-primary ">Search</button>
         <button class="btn btn-primary ">Search</button>
@@ -42,7 +44,7 @@
 
 
     <div class="table">
-        <table class="table table-striped">
+        <table class="table table-striped" id='admintable'>
             <thead>
                 <tr>
 
@@ -84,6 +86,24 @@
         </table>
     </div>
     <!--Container Main end-->
+    <script>
+        $(document).ready(function() {
+            var table = $('.table-stripped').DataTable({
+                lengthMenu: [
+                    [2, 4, 7, -1],
+                    [2, 4, 7, "All"]
+                ],
+                pageLength: 4
+            });
+        });
+    </script>
+
+ 
+
+
+
+
 </body>
 
 </html>
+

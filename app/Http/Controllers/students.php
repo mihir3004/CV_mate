@@ -70,7 +70,7 @@ class students extends Controller
             else
             return redirect('/login');
     }
-    public function studentleaderboard()
+    public function studentleaderboard(Request $req)
     {
         if (session('role')=='Student') {
             if (session('role')=='Student') {

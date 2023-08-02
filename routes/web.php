@@ -30,49 +30,62 @@ Route::get('/logout', [registration::class, 'logout'])->name('student.logout');
 Route::get('/forgetpassword', [registration::class, 'forgetpassword'])->name('forget.password');
 Route::get('/verify_student', [registration::class, 'verifys'])->name('verify.student');
 
+Route::group(['prefix'=>'admin'],function(){
 
-Route::get('admin/admindashboard', [admin::class, 'admindashboard'])->name('admin.dashboard');
-Route::get('admin/coordinatorlist', [admin::class, 'coordinatorlist'])->name('coordinator.list');
-Route::post('admin/coordinatorlist', [admin::class, 'coordinatorauth']);
-Route::get('admin/createcoordinator', [admin::class, 'createcoordinator'])->name('create.coordinator');
-Route::get('admin/editcoordinator/{id}', [admin::class, 'editcoordinator'])->name('edit.coordinator');
-Route::post('admin/updatecoordinator/{id}', [admin::class, 'updatecoordinator'])->name('update.coordinator');
-Route::get('admin/slidebar', [admin::class, 'slidebar'])->name('admin.slidebar');
-Route::get('admin/studentview', [admin::class, 'studentview'])->name('student.view');
-Route::get('admin/adminleader', [admin::class, 'adminleader'])->name('student.leader');
-Route::get('admin/deletecoordinator/{id}', [admin::class, 'deletecoordinator'])->name('delete.coordinator');
-Route::get('admin/deletestudent/{id}', [admin::class, 'deletestudent'])->name('delete.student');
-Route::get('admin/studentview/studentdetail/{id}', [admin::class, 'studentdetail'])->name('student.detail');
-Route::get('co-ordinator/dashboard', [coordinators::class, 'coordinatordashboard'])->name('coordinator.dashboard');
-Route::get('co-ordinator/profile', [coordinators::class, 'coordinatorprofile'])->name('coordinator.profile');
-Route::get('co-ordinator/studentview/{semester?}', [coordinators::class, 'studentview'])->name('studentc.view');
-// Route::get('co-ordinator/studentsemester', [coordinators::class, 'studentsemesterview'])->name('studentcsemester.view');
-Route::get('co-ordinator/studentrequest', [coordinators::class, 'studentrequest'])->name('coordinator.srequest');
-Route::get('co-ordinator/projectrequest', [coordinators::class, 'projectrequest'])->name('coordinator.prequest');
-Route::get('co-ordinator/certificaterequest', [coordinators::class, 'certificaterequest'])->name('coordinator.crequest');
-Route::get('co-ordinator/studentapproval/{id}', [coordinators::class, 'studentapprove'])->name('student.approve');
-Route::get('co-ordinator/certificateapproval/{id}', [coordinators::class, 'certificateapprove'])->name('approve.ccertificate');
-Route::get('co-ordinator/projectapproval/{id}', [coordinators::class, 'projectapprove'])->name('approve.cproject');
-Route::get('co-ordinator/studentdelete/{id}', [coordinators::class, 'studentdelete'])->name('delete.cstudent');
-Route::get('co-ordinator/certificatedelete/{id}', [coordinators::class, 'certificatedelete'])->name('delete.ccertificate');
-Route::get('co-ordinator/projectdelete/{id}', [coordinators::class, 'projectdelete'])->name('delete.cproject');
-Route::get('student/profile', [students::class, 'studentprofile'])->name('student.profile');
-Route::get('student/certificateupload', [students::class, 'certificateupload'])->name('student.certificateupload');
-Route::post('student/uploadcertificate', [students::class, 'certiupload'])->name('student.certiupload');
-Route::get('student/projectupload', [students::class, 'studentprojectupload'])->name('student.projectupload');
-Route::post('student/uploadproject', [students::class, 'projectupload'])->name('project.upload');
-Route::get('student/leaderboard', [students::class, 'studentleaderboard'])->name('student.leaderboard');
-Route::post('student/uploadimage', [students::class, 'saveimage'])->name('save.studentimage');
-Route::get('student/deleteimage', [students::class, 'deleteimage'])->name('delete.studentimage');
-Route::get('student/changepassword', [students::class, 'changepassword'])->name('change.studentpassword');
-Route::post('student/changepassword', [students::class, 'savepassword'])->name('save.studentpassword');
-Route::get('student/friendrequest/{id}', [students::class, 'friendrequest'])->name('friend.request');
 
-Route::get('student/sendfriendreq', [students::class, 'friendreq'])->name('send.friendreq');
-Route::get('student/friendreq', [students::class, 'acceptfriend'])->name('accept.friendreq');
-Route::get('co-ordinator/viewpdf/{filename}', [coordinators::class, 'viewpdf'])->name('view.pdf');
+    Route::get('/admindashboard', [admin::class, 'admindashboard'])->name('admin.dashboard');
+    Route::get('/coordinatorlist', [admin::class, 'coordinatorlist'])->name('coordinator.list');
+    Route::post('/coordinatorlist', [admin::class, 'coordinatorauth']);
+    Route::get('/createcoordinator', [admin::class, 'createcoordinator'])->name('create.coordinator');
+    Route::get('/editcoordinator/{id}', [admin::class, 'editcoordinator'])->name('edit.coordinator');
+    Route::post('/updatecoordinator/{id}', [admin::class, 'updatecoordinator'])->name('update.coordinator');
+    Route::get('/slidebar', [admin::class, 'slidebar'])->name('admin.slidebar');
+    Route::get('/studentview', [admin::class, 'studentview'])->name('student.view');
+    Route::get('/adminleader', [admin::class, 'adminleader'])->name('student.leader');
+    Route::get('/deletecoordinator/{id}', [admin::class, 'deletecoordinator'])->name('delete.coordinator');
+    Route::get('/deletestudent/{id}', [admin::class, 'deletestudent'])->name('delete.student');
+    Route::get('/studentview/studentdetail/{id}', [admin::class, 'studentdetail'])->name('student.detail');
+});
 
-Route::get('student/uploadimage',[students::class,'studentupload'])->name('student.uploadimage');
-Route::get('student/skill',[students::class,'studentskill'])->name('student.skill');
-Route::get('student/resume',[students::class,'createpdf'])->name('create.resume');
-Route::get('student/downloadresume',[students::class,'downloadpdf'])->name('download.pdf');
+Route::group(['prefix'=>'co-ordinator'],function(){
+    Route::get('/dashboard', [coordinators::class, 'coordinatordashboard'])->name('coordinator.dashboard');
+    Route::get('/profile', [coordinators::class, 'coordinatorprofile'])->name('coordinator.profile');
+    Route::get('/studentview/{semester?}', [coordinators::class, 'studentview'])->name('studentc.view');
+    // Route::get('/studentsemester', [coordinators::class, 'studentsemesterview'])->name('studentcsemester.view');
+    Route::get('/studentrequest', [coordinators::class, 'studentrequest'])->name('coordinator.srequest');
+    Route::get('/projectrequest', [coordinators::class, 'projectrequest'])->name('coordinator.prequest');
+    Route::get('/certificaterequest', [coordinators::class, 'certificaterequest'])->name('coordinator.crequest');
+    Route::get('/studentapproval/{id}', [coordinators::class, 'studentapprove'])->name('student.approve');
+    Route::get('/certificateapproval/{id}', [coordinators::class, 'certificateapprove'])->name('approve.ccertificate');
+    Route::get('/projectapproval/{id}', [coordinators::class, 'projectapprove'])->name('approve.cproject');
+    Route::get('/studentdelete/{id}', [coordinators::class, 'studentdelete'])->name('delete.cstudent');
+    Route::get('/certificatedelete/{id}', [coordinators::class, 'certificatedelete'])->name('delete.ccertificate');
+    Route::get('/projectdelete/{id}', [coordinators::class, 'projectdelete'])->name('delete.cproject');
+    Route::get('/viewpdf/{filename}', [coordinators::class, 'viewpdf'])->name('view.pdf');
+
+});
+
+Route::group(['prefix'=>'student'],function(){
+   
+Route::get('/profile', [students::class, 'studentprofile'])->name('student.profile');
+Route::get('/certificateupload', [students::class, 'certificateupload'])->name('student.certificateupload');
+Route::post('/uploadcertificate', [students::class, 'certiupload'])->name('student.certiupload');
+Route::get('/projectupload', [students::class, 'studentprojectupload'])->name('student.projectupload');
+Route::post('/uploadproject', [students::class, 'projectupload'])->name('project.upload');
+Route::get('/leaderboard', [students::class, 'studentleaderboard'])->name('student.leaderboard');
+Route::post('/uploadimage', [students::class, 'saveimage'])->name('save.studentimage');
+Route::get('/deleteimage', [students::class, 'deleteimage'])->name('delete.studentimage');
+Route::get('/changepassword', [students::class, 'changepassword'])->name('change.studentpassword');
+Route::post('/changepassword', [students::class, 'savepassword'])->name('save.studentpassword');
+Route::get('/friendrequest/{id}', [students::class, 'friendrequest'])->name('friend.request');
+
+Route::get('/sendfriendreq', [students::class, 'friendreq'])->name('send.friendreq');
+Route::get('/friendreq', [students::class, 'acceptfriend'])->name('accept.friendreq');
+
+Route::get('/uploadimage',[students::class,'studentupload'])->name('student.uploadimage');
+Route::get('/skill',[students::class,'studentskill'])->name('student.skill');
+Route::get('/resume',[students::class,'createpdf'])->name('create.resume');
+Route::get('/downloadresume',[students::class,'downloadpdf'])->name('download.pdf');
+});
+
+
