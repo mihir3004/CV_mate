@@ -5,28 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
+    {{-- <link rel="stylesheet" href="/header.css"> --}}
 </head>
 <body>
 
-    {{-- <div class="container1">
-
-                <div class="navbar">
-            <img class="img" src="/OIP.jpeg" alt="" srcset="">
-
-            <div class="button">
-                <!-- <button class="btn">Login</button>
-                <button class="btn">sign-up</button> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">CV mate</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ route('coordinator.list') }}">Co-ordinator list</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('create.coordinator') }}">Create Co-ordinator</a>
+              </li>
+              {{-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> --}}
+              {{-- <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li> --}}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('student.leader') }}">Leaderboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('student.view') }}">Student view</a>
+              </li>
+            </ul>
+            <div class="d-flex">
+              {{-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> --}}
+              <a href="{{ route('student.logout') }}">
+                <button class="btn btn-outline-danger" type="submit">Sign out</button>
+            </a>
+              
             </div>
-            <p class="banner">
-                VISHWKARMA GOVERMENT ENGINEERING COLLEGE,
-                CHANDKHEDA, AHEMDABAD
-            </p>
-           
+          </div>
         </div>
-    </div> --}}
+      </nav>
+    
 
-    <header class="header" id="header">
+    {{-- <header class="header" id="header">
         <div class="header_toggle">
             <i class="bx bx-menu" id="header-toggle"></i>
         </div>
@@ -45,10 +77,7 @@
                     <span class="nav_logo-name">Admin</span>
                 </a>
                 <div class="nav_list" id="side_bar_list">
-                    {{-- <a href="{{ route('admin.dashboard') }}" class="nav_link active">
-                         <i class="bx bx-grid-alt nav_icon"></i>
-                         <span class="nav_name">Dashboard</span>
-                     </a> --}}
+                 
                     <a href="{{ route('coordinator.list') }}" id="new" class="nav_link">
                         <i class="fa-solid fa-users superadmin"></i>
                         <span class="nav_name"> Co-ordinator list</span>
@@ -57,10 +86,7 @@
                         <i class="fa-solid fa-plus superadmin"></i>
                         <span class="nav_name">Create Co-ordinator</span>
                     </a>
-                    {{-- <a href="{{ route('edit.coordinator') }}" class="nav_link">
-                        <i class="fa-solid fa-pen superadmin"></i>
-                        <span class="nav_name">Edit Co-ordinator</span>
-                    </a> --}}
+                   
                     <a href="{{ route('student.leader') }}" class="nav_link">
                         <i class="fa-solid fa-ranking-star superadmin"></i>
                         <span class="nav_name">Leaderboard</span>
@@ -69,10 +95,7 @@
                         <i class="fa-solid fa-user-graduate superadmin"></i>
                         <span class="nav_name">Student View</span>
                     </a>
-                    {{-- <a href="{{ route('admin.next') }}" class="nav_link">
-                         <i class="fa-solid fa-building-user superadmin"></i>
-                         <span class="nav_name">Department</span>
-                     </a> --}}
+                   
                 </div>
                 <!-- </div> -->
                 <a href="{{ route('student.logout') }}" class="nav_link">
@@ -81,11 +104,7 @@
     
                 </a>
         </nav>
-        {{-- {{-- <script type="text/javascript">
-            $(document).on('click', 'a nav_link', function() {
-                $(this).addClass('nav_link active').siblings().removeClass('active')
-            }) --}}
-    
+        
         <script type="text/javascript">
             // $(document).ready(function() {
     
@@ -101,21 +120,12 @@
             })
     
     
-            // $('a').click(function(e) {
-            //     console.log("inn", e)
-            //     console.log(sideBarItems);
-            //     // $(this).addClass('active').siblings().removeClass('active')
-            //     alert("hello");
-            //     // $('#new').addClass('active');
-            //     // event.preventDefault();
-    
-            // })
-            // });
+         
         </script>
     
     
     </div>
     
     
-</body>
+</body> --}}
 </html>

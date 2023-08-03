@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
 :root {
     --header-height: 3rem;
@@ -41,15 +41,13 @@ a {
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    /* background-color: black; */
-    /* background-color: rgb(65, 138, 201); */
     background-color: rgb(0, 0, 166);
     z-index: var(--z-fixed);
     transition: .5s
 }
 
 .header_toggle {
-    /* color: var(--first-color); */
+    
     color: white;
     font-size: 1.5rem;
     cursor: pointer
@@ -75,8 +73,7 @@ a {
     left: -30%;
     width: var(--nav-width);
     height: 100vh;
-    /* background-color: var(--first-color); */
-    /* background-color: rgb(65, 138, 201); */
+    
     background-color: rgb(0, 0, 0);
     padding: .5rem 1rem 0 0;
     transition: .5s;
@@ -203,12 +200,10 @@ a {
 .container{
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
-    /* justify-content: space-between; */
     justify-content: space-around;
     align-items: center;
     height: 250px;
-    /* background-color:rgb(74, 112, 249); */
+    /* background-color:rgb(74, 112, 249); 
 
 }
 .b1{
@@ -346,4 +341,4 @@ h4{
 }
 .l-navbar{
     margin-top: 5em;
-}
+} */

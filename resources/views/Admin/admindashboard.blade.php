@@ -6,16 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {{-- <link rel="stylesheet" href="/superadmin.css" /> --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
     {{-- <link rel="stylesheet" href="/havkvgec.css"> --}}
     <script src="/superadmin.js"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/5014f23600.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/5014f23600.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-    <link rel="stylesheet" href="/superadmindashboard.css" />
+    {{-- <link rel="stylesheet" href="/superadmindashboard.css" /> --}}
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
       </style>
