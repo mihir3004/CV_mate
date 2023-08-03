@@ -32,8 +32,7 @@
         <table class="table table-striped" id="Co_or-Tabel">
             <thead>
                 <tr>
-                    <th scope="col">Sr no.</th>
-                    
+                    <th scope="col">Sr no.</th>  
                     <th scope="col">Enrollment</th>
                     <th scope="col">Project Name</th>
                     <th scope="col">Project Link</th>
@@ -41,6 +40,8 @@
                     <th scope="col">Role</th>
                     <th scope="col">Company name</th>
                     <th scope="col">Description</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>

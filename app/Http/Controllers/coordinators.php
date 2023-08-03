@@ -76,8 +76,9 @@ class coordinators extends Controller
             $enrollment=Student::get('enrollment')->toArray();
             $certificate=Certificate::wherein('enrollment',$enrollment)->where('coordinator',session('name'))->where('status','Pending')->get()->toArray();
             $i=1;
-            $data=compact('certificate','i');
-
+            
+                $data=compact('certificate','i');
+            
             return view('Co_ordinator.CertificateReQ')->with($data);
             }
             else
@@ -122,7 +123,7 @@ class coordinators extends Controller
     public function studentrequest()
     {
     if (session('role')=='Co-ordinator') {
-        $student=Student::where('department',session()->get('department'))->where('status','Pending')->get();
+        $student=Student::where('department',session()->get('department'))->where('status','Pending')->get()->toArray();
         $i=1;
         $data=compact('student','i');
     return view('Co_ordinator.stdRequest')->with($data);

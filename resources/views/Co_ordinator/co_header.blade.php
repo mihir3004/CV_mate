@@ -37,7 +37,7 @@
                             </a>
                             <!-- <i class="bx bx-grid-alt nav_icon dropdown"></i> -->
                             <i class="fa-solid fa-caret-down arrow "></i>
-                        </div>
+              </div>
                     <div class="sub-menu ">
                         <a href="{{ route('coordinator.srequest') }}" class="nav_link dropdown">
                             <i class="fa-solid fa-user-graduate superadmin"></i>
@@ -61,7 +61,7 @@
                             <i class="fa-solid fa-file superadmin"></i>
                             <span class="nav_name">Project Request</span>
                         </a>
-                    </div>
+          </div>
           <div class="sub-btn">
             <a href="#" class="nav_link active1">
                 <i class="bx bx-grid-alt nav_icon"></i>
@@ -70,7 +70,7 @@
             </a>
             <!-- <i class="bx bx-grid-alt nav_icon dropdown"></i> -->
             <i class="fa-solid fa-caret-down arrow "></i>
-          </div>
+</div>
     <div class="sub-menu ">
         <a href="{{ route('studentc.view') }}" class="nav_link dropdown">
             <i class="fa-solid fa-user-graduate superadmin"></i>
@@ -94,7 +94,7 @@
             <i class="fa-solid fa-file superadmin"></i>
             <span class="nav_name">Project View</span>
         </a>
-          </div>
+</div>
                 <a href="#" class="nav_link">
                     <!-- <i class="fa-solid fa-user-graduate superadmin"></i> -->
                     <i class="fa-solid fa-ranking-star superadmin"></i>

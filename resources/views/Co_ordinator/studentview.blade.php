@@ -74,7 +74,7 @@
             <tbody>
                 @foreach ($student as $s)
                     <tr>
-                        <th scope="row">{{ $i }}</th>
+                        <td scope="row">{{ $i }}</td>
                         <td>{{ $s['name'] }}</td>
                         <td>{{ $s['enrollment'] }}</td>
                         <td>{{ $s['email'] }}</td>

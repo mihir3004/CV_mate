@@ -49,9 +49,9 @@
             </thead>
             <tbody>
 
+                @foreach ($student as $s)
                 <tr>
-                    @foreach ($student as $s)
-                        <th scope="row">{{ $i }}</th>
+                        <td scope="row">{{ $i }}</td>
                         <td>{{ $s['name'] }}</td>
                         <td>{{ $s['email'] }}</td>
                         <td>{{ $s['enrollment'] }}</td>
@@ -77,16 +77,12 @@
 
 ></script>
 
-<script
-type="text/javascript"
-charset="utf8"
-src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
 </script>
 
 <script>
 $(function() {
-$("#Co_or-Tabel").dataTable();
-});
+    $("#Co_or-Tabel").dataTable();});
 </script>
 
 

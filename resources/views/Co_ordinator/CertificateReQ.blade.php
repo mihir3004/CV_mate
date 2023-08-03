@@ -39,23 +39,23 @@
                     <th scope="col">Event Name</th>
                     <th scope="col">Level</th>
                     <th scope="col">File</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                     
                 </tr>
             </thead>
             <tbody>
 
+                @foreach($certificate as $c)
                 <tr>
-                    @foreach($certificate as $c)
-                    <th scope="row">{{$i}}</th>
+                    <td scope="row">{{$i}}</td>
                     <td>{{$c['certificate_name']}}</td>
                     <td>{{$c['enrollment']}}</td>
                     <td>{{$c['type']}}</td>
                     <td>{{$c['event']}}</td>
                     <td>{{$c['level']}}</td>
                     <td> <a href="/co-ordinator/viewpdf/{{$c['path']}}">{{$c['path']}}</a> </iframe></td>
-                    
-                    <td><a href="{{ route('approve.ccertificate', ['id' => $c['certificate_id']]) }}"><i class="fa-solid fa-check fa-lg"></i></i></a>
-                    </td>
+                    <td><a href="{{ route('approve.ccertificate', ['id' => $c['certificate_id']]) }}"><i class="fa-solid fa-check fa-lg"></i></i></a></td>
                     <td><a href="{{ route('delete.ccertificate', ['id' => $c['certificate_id']]) }}"><i class="fa-solid fa-trash icon fa-lg "></i></a></td>
                     
                     
