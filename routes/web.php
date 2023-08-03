@@ -7,6 +7,8 @@ use App\Http\Controllers\registration;
 use App\Http\Controllers\student;
 use App\Http\Controllers\students;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

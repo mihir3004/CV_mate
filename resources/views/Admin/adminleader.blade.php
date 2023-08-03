@@ -44,7 +44,7 @@
 
 
     <div class="table">
-        <table class="table table-striped" id='admintable'>
+        <table class="table table-striped" id='AdminTabel'>
             <thead>
                 <tr>
 
@@ -86,18 +86,24 @@
         </table>
     </div>
     <!--Container Main end-->
-    <script>
-        $(document).ready(function() {
-            var table = $('.table-stripped').DataTable({
-                lengthMenu: [
-                    [2, 4, 7, -1],
-                    [2, 4, 7, "All"]
-                ],
-                pageLength: 4
-            });
-        });
-    </script>
+    <script
+    type="text/javascript"
+    charset="utf8"
+    src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
 
+></script>
+
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+</script>
+
+<script>
+$(function() {
+$("#AdminTabel").dataTable();
+});
+</script>
  
 
 

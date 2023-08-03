@@ -21,15 +21,15 @@
 <body id="body-pd">
     @include('Co_ordinator/co_header')
 
-    <div class="input-group">
+    {{-- <div class="input-group">
         <input name="search_coordinator" id="search_coordinator" type="search" class="form-control rounded"
             placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         <button name="btn_coordinator" id="btn_coordinator" type="button"
             class="btn btn-outline-success">search</button>
-    </div>
+    </div> --}}
 
     <div class="table">
-        <table class="table table-striped">
+        <table class="table table-striped" id="Co_or-Tabel">
             <thead>
                 <tr>
                     <th scope="col">Sr no.</th>
@@ -39,8 +39,7 @@
                     <th scope="col">Event Name</th>
                     <th scope="col">Level</th>
                     <th scope="col">File</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -59,6 +58,7 @@
                     </td>
                     <td><a href="{{ route('delete.ccertificate', ['id' => $c['certificate_id']]) }}"><i class="fa-solid fa-trash icon fa-lg "></i></a></td>
                     
+                    
                 </tr>
                 <p hidden>{{$i++}}</p>
                 @endforeach
@@ -66,6 +66,25 @@
             </tbody>
         </table>
     </div>
+
+    <script
+    type="text/javascript"
+    charset="utf8"
+    src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+
+></script>
+
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+</script>
+
+<script>
+$(function() {
+$("#Co_or-Tabel").dataTable();
+});
+</script>
 
 
 

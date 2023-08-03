@@ -13,6 +13,7 @@
 
     <script src="/superadmin.js"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/5014f23600.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <script src="https://kit.fontawesome.com/5014f23600.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 
@@ -51,7 +52,7 @@
 
 
     <div class="table">
-        <table class="table table-striped">
+        <table class="table table-striped" id="AdminTabel">
             <thead>
                 <tr>
                     <th scope="col">Sr no.</th>
@@ -82,10 +83,38 @@
                 @endforeach
             </tbody>
         </table>
+       
     </div>
 
+    {{-- <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function{
+            let table = new DataTable('#AdminTabel');
+        })
+    </script> --}}
+    <script
+    type="text/javascript"
+    charset="utf8"
+    src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+
+></script>
+
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+</script>
+
+<script>
+$(function() {
+$("#AdminTabel").dataTable();
+});
+</script>
     
     <!--Container Main end-->
 </body>
+
+
 
 </html>

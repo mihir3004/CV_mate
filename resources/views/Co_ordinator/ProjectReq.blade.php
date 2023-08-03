@@ -21,15 +21,15 @@
 <body id="body-pd">
     @include('Co_ordinator/co_header')
 
-    <div class="input-group">
+    {{-- <div class="input-group">
         <input name="search_pro_req" id="pro_req" type="search" class="form-control rounded" placeholder="Search"
             aria-label="Search" aria-describedby="search-addon" />
         <button name="btn_pro_req" id="btn_pro_req" type="button" class="btn btn-outline-success">search</button>
-    </div>
+    </div> --}}
 
 
     <div class="table">
-        <table class="table table-striped">
+        <table class="table table-striped" id="Co_or-Tabel">
             <thead>
                 <tr>
                     <th scope="col">Sr no.</th>
@@ -67,6 +67,24 @@
            
         </table>
     </div>
+    <script
+    type="text/javascript"
+    charset="utf8"
+    src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+
+></script>
+
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+</script>
+
+<script>
+$(function() {
+$("#Co_or-Tabel").dataTable();
+});
+</script>
 
 
 

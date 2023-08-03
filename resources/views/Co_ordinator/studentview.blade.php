@@ -36,15 +36,15 @@
 <body id="body-pd">
    
     <!--Container Main start-->
-    <nav class="navbar navbar-light bg-white">
+    {{-- <nav class="navbar navbar-light bg-white">
         <form class="input-group  ">
             <input class="form-control " name="search" value="{{ $search }}" type="search"
                 placeholder="Search by Name or Enrollment" aria-label="Search">
             <button class="btn btn-outline-success my-4 my-sm-0 button" type="submit">Search</button>
         </form>
-    </nav>
+    </nav> --}}
     <div class="table">
-        <table class="table table-striped">
+        <table class="table table-striped" id="Co_or-Tabel">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -91,6 +91,24 @@
         </table>
     </div>
     <!--Container Main end-->
+    <script
+    type="text/javascript"
+    charset="utf8"
+    src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+
+></script>
+
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+</script>
+
+<script>
+$(function() {
+$("#Co_or-Tabel").dataTable();
+});
+</script>
 </body>
 
 </html>

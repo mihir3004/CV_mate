@@ -28,7 +28,7 @@
         </form> --}}
     {{-- </nav> --}}
     <div class="table">
-        <table class="table table-striped">
+        <table class="table table-striped" id="AdminTabel">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -73,6 +73,25 @@
             </tbody>
         </table>
     </div>
+
+    <script
+    type="text/javascript"
+    charset="utf8"
+    src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+
+></script>
+
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+</script>
+
+<script>
+$(function() {
+$("#AdminTabel").dataTable();
+});
+</script>
     <!--Container Main end-->
 </body>
 

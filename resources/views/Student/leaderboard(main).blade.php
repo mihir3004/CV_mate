@@ -8,18 +8,19 @@
     <link rel="stylesheet" href="/leaderboard(main).css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
 </head>
 <body>
   @include('Student/studentheader')
-    <nav class="navbar navbar-light bg-white"style="margin-top: 1em">
+    {{-- <nav class="navbar navbar-light bg-white"style="margin-top: 1em">
         <form class="form-inline" >
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-4 my-sm-0 button" type="submit">Search</button>
         </form>
-      </nav>
+      </nav> --}}
       
       <div class="table">
-          <table class="table table-striped" >
+          <table class="table table-striped" id="Stu_Tabel">
               <thead>
                 <tr>
                   
@@ -49,5 +50,24 @@
               </tbody>
             </table>
       </div>
+      
+      <script
+      type="text/javascript"
+      charset="utf8"
+      src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+  
+  ></script>
+  
+  <script
+  type="text/javascript"
+  charset="utf8"
+  src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+  </script>
+  
+  <script>
+  $(function() {
+  $("#Stu_Tabel").dataTable();
+  });
+  </script>
 </body>
 </html>
