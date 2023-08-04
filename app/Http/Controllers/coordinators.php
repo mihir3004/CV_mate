@@ -7,24 +7,25 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class coordinators extends Controller
 {
     public function coordinatordashboard()
     {
-    if (session('role')=='Co-ordinator') {
-        $student=Student::where('department',session()->get('department'))->count();
+    if (Session::get('role')=='Co-ordinator') {
+        $student=Student::where('department',Session::get('department'))->count();
   
    // $count['department']=Coordinator::count();
     $enrol['certificate']=Certificate::get('enrollment');
     $enrol['project']=Project::get('enrollment');
-    $count['student']=Student::where('status','Approved')->where('department',session()->get('department'))->count();
-    $count['project']=Student::wherein('enrollment',$enrol['project'])->where('department',session()->get('department'))->count();
-    $count['certificate']=Student::wherein('enrollment',$enrol['certificate'])->where('department',session()->get('department'))->count();
+    $count['student']=Student::where('status','Approved')->where('department',Session::get('department'))->count();
+    $count['project']=Student::wherein('enrollment',$enrol['project'])->where('department',Session::get('department'))->count();
+    $count['certificate']=Student::wherein('enrollment',$enrol['certificate'])->where('department',Session::get('department'))->count();
     
     $data1=compact('count');
     
-   // if (session('role')=='Co-ordinator') {
+   // if (Session::get('role')=='Co-ordinator') {
         return view('Co_ordinator.Coordinatordashboard')->with($data1);
     
     }
@@ -35,25 +36,25 @@ class coordinators extends Controller
     public function studentview(Request $req,$semester=null)
     {
         
-        if (session('role')=='Co-ordinator') {
+        if (Session::get('role')=='Co-ordinator') {
             if($semester==null)
             {
             $search = $req['search'] ?? "";
             if($search != ""){
-                $student = Student::where('department',session()->get('department'))->where('name','LIKE',"%$search%")->orwhere('enrollment','LIKE',"$search%")->get();
+                $student = Student::where('department',Session::get('department'))->where('name','LIKE',"%$search%")->orwhere('enrollment','LIKE',"$search%")->get();
             }
             else{
-                $student=Student::where('department',session()->get('department'))->get();
+                $student=Student::where('department',Session::get('department'))->get();
             }
         }
         else
         {
             $search = $req['search'] ?? "";
             if($search != ""){
-                $student = Student::where('semester',$semester)->where('department',session()->get('department'))->where('name','LIKE',"%$search%")->orwhere('enrollment','LIKE',"$search%")->get();
+                $student = Student::where('semester',$semester)->where('department',Session::get('department'))->where('name','LIKE',"%$search%")->orwhere('enrollment','LIKE',"$search%")->get();
             }
             else{
-                $student=Student::where('department',session()->get('department'))->where('semester',$semester)->get();
+                $student=Student::where('department',Session::get('department'))->where('semester',$semester)->get();
             }
         }
         if(!$semester)
@@ -71,10 +72,10 @@ class coordinators extends Controller
     }
     public function certificaterequest()
     {
-        if (session('role')=='Co-ordinator') {
+        if (Session::get('role')=='Co-ordinator') {
             // $enrollment=Student::where('department',session('department'))->get('enrollment')->toArray();
             $enrollment=Student::get('enrollment')->toArray();
-            $certificate=Certificate::wherein('enrollment',$enrollment)->where('coordinator',session('name'))->where('status','Pending')->get()->toArray();
+            $certificate=Certificate::wherein('enrollment',$enrollment)->where('coordinator',Session::get('name'))->where('status','Pending')->get()->toArray();
             $i=1;
             
                 $data=compact('certificate','i');
@@ -86,10 +87,10 @@ class coordinators extends Controller
     }
     public function coordinatorprofile()
     {
-    if (session('role')=='Co-ordinator') {
-        $student=Student::where('department',session()->get('department'))->where('status','Approved')->get();
-        $coordinator=Coordinator::where('co-ordinator_id',session()->get('id'))->get();
-        // echo session()->get('department');
+    if (Session::get('role')=='Co-ordinator') {
+        $student=Student::where('department',Session::get('department'))->where('status','Approved')->get();
+        $coordinator=Coordinator::where('co-ordinator_id',Session::get('id'))->get();
+        // echo Session::get('department');
         // echo $student;
         // echo $coordinator;
         $count=$student->count();
@@ -102,7 +103,7 @@ class coordinators extends Controller
     }
     public function deletestudent($id)
     {
-    if (session('role')=='Co-ordinator') {
+    if (Session::get('role')=='Co-ordinator') {
     $student=Student::find($id);
     if(is_null($student))
     {
@@ -122,8 +123,8 @@ class coordinators extends Controller
     }
     public function studentrequest()
     {
-    if (session('role')=='Co-ordinator') {
-        $student=Student::where('department',session()->get('department'))->where('status','Pending')->get()->toArray();
+    if (Session::get('role')=='Co-ordinator') {
+        $student=Student::where('department',Session::get('department'))->where('status','Pending')->get()->toArray();
         $i=1;
         $data=compact('student','i');
     return view('Co_ordinator.stdRequest')->with($data);
@@ -134,7 +135,7 @@ class coordinators extends Controller
     }
     public function projectrequest()
     {
-    if (session('role')=='Co-ordinator') {
+    if (Session::get('role')=='Co-ordinator') {
         $enrollment=Student::where('department',session('department'))->get('enrollment')->toArray();
         $project=Project::wherein('enrollment',$enrollment)->where('status','Pending')->get()->toArray();
         $i=1;
@@ -150,7 +151,7 @@ class coordinators extends Controller
     
     public function studentapprove($id)
     {
-    if (session('role')=='Co-ordinator') 
+    if (Session::get('role')=='Co-ordinator') 
     {
         $student=Student::find($id);
         if(is_null($student))
@@ -178,7 +179,7 @@ class coordinators extends Controller
     }
     public function certificateapprove($id)
     {
-    if (session('role')=='Co-ordinator'||session('role')=='Admin') 
+    if (Session::get('role')=='Co-ordinator'||Session::get('role')=='Admin') 
     {
         $certificate=Certificate::find($id);
         if(is_null($certificate))
@@ -217,7 +218,7 @@ class coordinators extends Controller
     }
     public function projectapprove($id)
     {
-    if (session('role')=='Co-ordinator') 
+    if (Session::get('role')=='Co-ordinator') 
     {
         $project=Project::find($id);
         if(is_null($project))
@@ -245,7 +246,7 @@ class coordinators extends Controller
     }
     public function studentdelete($id)
     {
-    if (session('role')=='Co-ordinator')
+    if (Session::get('role')=='Co-ordinator')
     {
      $student=Student::find($id);
      if(is_null($student))
@@ -261,7 +262,7 @@ class coordinators extends Controller
     }
     public function certificatedelete($id)
     {
-    if (session('role')=='Co-ordinator')
+    if (Session::get('role')=='Co-ordinator')
     {
      $certificate=Certificate::find($id);
      if(is_null($certificate))
@@ -277,7 +278,7 @@ class coordinators extends Controller
     }
     public function projectdelete($id)
     {
-    if (session('role')=='Co-ordinator')
+    if (Session::get('role')=='Co-ordinator')
     {
      $project=Project::find($id);
      if(is_null($project))
@@ -294,7 +295,7 @@ class coordinators extends Controller
     
     // public function studentsemesterview($id)
     // {   
-    //     if (session('role')=='Co-ordinator') {
+    //     if (Session::get('role')=='Co-ordinator') {
     //         $student=Student::where
     //         }
     //         return redirect('/login');
@@ -306,7 +307,7 @@ class coordinators extends Controller
     }
     public function viewpdf($filename)
     {
-        if (session('role')=='Co-ordinator'||session('role')=='Admin')
+        if (Session::get('role')=='Co-ordinator'||Session::get('role')=='Admin')
     {
         $name=$filename;
         $data=compact('name');

@@ -8,6 +8,7 @@ use App\Models\Coordinator;
 use App\Models\Friend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -18,23 +19,23 @@ class students extends Controller
 
         
 
-        if (session('role')=='Student') {
-            if(session('img'))
+        if (Session::get('role')=='Student') {
+            if(Session::get('img'))
         {
             Alert::success('Done!','Profile Picture Set Successfully');
-            session()->forget('img');
+            Session::forget('img');
         }
-        if(session('delimg'))
+        if(Session::get('delimg'))
         {
             Alert::success('Done!','Profile Picture Removed');
-            session()->forget('delimg');
+            Session::forget('delimg');
         }
-            $student=Student::where('student_id',session('id'))->get()->toArray();
-            $student1=Student::where('student_id',session('id'))->get('enrollment')->toArray();
+            $student=Student::where('student_id',Session::get('id'))->get()->toArray();
+            $student1=Student::where('student_id',Session::get('id'))->get('enrollment')->toArray();
             $count['certificate']=Certificate::where('enrollment',$student1)->where('status','Approved')->count();
             $count['project']=Project::where('enrollment',$student1)->where('status','Approved')->count();
             $count['friend']=Friend::where('friend_of_friend_id',$student1)->where('status','Approved')->count();
-            $point=Certificate::where('enrollment',session('enrollment'))->where('status','Approved')->sum('point');
+            $point=Certificate::where('enrollment',Session::get('enrollment'))->where('status','Approved')->sum('point');
             $data=compact('student','count','point');
             return view('Student.Studentprofile')->with($data);
             }
@@ -43,11 +44,11 @@ class students extends Controller
     }
     public function certificateupload()
     {
-        if (session('role')=='Student') {
-            if(session('certiupload'))
+        if (Session::get('role')=='Student') {
+            if(Session::get('certiupload'))
             {
                 Alert::success('Done!','Certificate Uploaded Succesfully.');
-            session()->forget('certiupload');
+            Session::forget('certiupload');
             }
             $faculty=Coordinator::get('name')->toArray();
             // print_r($faculty);
@@ -59,11 +60,11 @@ class students extends Controller
     }
     public function studentprojectupload()
     {
-        if (session('role')=='Student') {
-            if(session('projectupload'))
+        if (Session::get('role')=='Student') {
+            if(Session::get('projectupload'))
             {
                 Alert::success('Done!','Project has been uploaded. Wait for approval');
-                session()->forget('projectupload');
+                Session::forget('projectupload');
             }
             return view('Student.project(internship)');
             }
@@ -72,8 +73,8 @@ class students extends Controller
     }
     public function studentleaderboard(Request $req)
     {
-        if (session('role')=='Student') {
-            if (session('role')=='Student') {
+        if (Session::get('role')=='Student') {
+            if (Session::get('role')=='Student') {
                 $search = $req['search'] ?? "";
                 if($search != ""){
                     $student1 = Student::where('name','LIKE',"$search%")->orwhere('enrollment','LIKE',"$search%")->orderby('point','DESC')->get();
@@ -93,9 +94,9 @@ class students extends Controller
     public function studentupload()
     {
 
-        session()->put('img','profile picture set sucessfully.');
+        Session::put('img','profile picture set sucessfully.');
 
-        if (session('role')=='Student') {
+        if (Session::get('role')=='Student') {
             return view('Student.Upload_photo');
             }
         else
@@ -128,10 +129,10 @@ class students extends Controller
                 $point='04';
              }
             
-            $filename=session('enrollment').time().".".$req->file('file')->getClientOriginalExtension();
+            $filename=Session::get('enrollment').time().".".$req->file('file')->getClientOriginalExtension();
             $file->move('/xampp/htdocs/hackvgec/public/StudentCertificate/',$filename);
             $certificate=new Certificate;
-            $certificate->enrollment=session('enrollment');
+            $certificate->enrollment=Session::get('enrollment');
             $certificate->certificate_name=$req->certiname;
 
             $certificate->event=$req->event;
@@ -141,7 +142,7 @@ class students extends Controller
             $certificate->coordinator=$req->coordinator;
             $certificate->status="Pending";
             $certificate->point=$point;
-            session()->put('certiupload','1');
+            Session::put('certiupload','1');
             $certificate->save();
             
             
@@ -153,7 +154,7 @@ class students extends Controller
     {
     
             $project=new Project;
-            $project->enrollment=session('enrollment');
+            $project->enrollment=Session::get('enrollment');
             $project->project_name=$req->Projectname;
             $project->project_link=$req->Projectlink;
             $project->project_duration=$req->duration;
@@ -163,7 +164,7 @@ class students extends Controller
             $project->status="Pending";
             $project->save();
             
-            session()->put('projectupload','1');
+            Session::put('projectupload','1');
             // echo "<script>
             //     alert('Project has been uploaded. Wait for approval');
             //     window.location.href = '/student/projectupload';
@@ -180,7 +181,7 @@ class students extends Controller
           ]);
           
 
-        $student=Student::where('student_id',session('id'))->get('enrollment')->toArray();
+        $student=Student::where('student_id',Session::get('id'))->get('enrollment')->toArray();
         
         
         foreach($student as $e)
@@ -193,8 +194,8 @@ class students extends Controller
         
         // $path='/storage/'.$req->file('image')->storeAs('StudentImages',$filename);
         $file->move('/xampp/htdocs/hackvgec/public/StudentImage/',$filename);
-        session()->put('img','Image added successfully');
-        $std=Student::find(session('id'));
+        Session::put('img','Image added successfully');
+        $std=Student::find(Session::get('id'));
         $std->photo=$filename;
         $std->save();
        return redirect('student/profile');
@@ -202,25 +203,25 @@ class students extends Controller
     }
     public function deleteimage()
     {
-        if (session('role')=='Student') {
-            $std=Student::find(session('id'));
+        if (Session::get('role')=='Student') {
+            $std=Student::find(Session::get('id'));
             $std->photo='photo.png';
             $std->save();
-            session()->put('delimg','Deleted Succesfully');
+            Session::put('delimg','Deleted Succesfully');
             return redirect('student/profile');
             }
         else
             return redirect('/login');
     }
     public function changepassword(){
-        if (session('role')=='Student') {
+        if (Session::get('role')=='Student') {
             return view('Student.ChangePassword');
         }
         else
             return redirect('/login');
     }
     public function savepassword(Request $req){
-        if (session('role')=='Student') {
+        if (Session::get('role')=='Student') {
 
             $req->validate(
                 [
@@ -228,12 +229,12 @@ class students extends Controller
                     'password_confirmation' => 'required|same:password'
                 ]);
 
-            $student = Student::where('student_id',session('id'))->get()->toArray();
+            $student = Student::where('student_id',Session::get('id'))->get()->toArray();
             foreach($student as $s){
                 $password = $s['password'];
             }
             if( Hash::check($req->oldpassword,$password)){
-                $std=Student::find(session('id'));
+                $std=Student::find(Session::get('id'));
                 $std->password = Hash::make($req->password);
                 $std->save();
                 echo "<script>
@@ -256,8 +257,8 @@ class students extends Controller
     }
     public function friendreq(Request $req)
     {
-        if (session('role')=='Student') {
-            $enroll=Friend::where('friend_of_friend_id',session('enrollment'))->get('friend_id')->toArray();
+        if (Session::get('role')=='Student') {
+            $enroll=Friend::where('friend_of_friend_id',Session::get('enrollment'))->get('friend_id')->toArray();
             $i=0;
             if($enroll==null)
             {
@@ -275,22 +276,22 @@ class students extends Controller
             if($search != ""){
                 if($enroll!=null)
             {
-                $friend=Student::where('enrollment','<>',session('enrollment'))->where('name','LIKE',"$search%")->orwhere('enrollment','LIKE',"$search%")->wherenotin('enrollment',$fenroll)->get();
+                $friend=Student::where('enrollment','<>',Session::get('enrollment'))->where('name','LIKE',"$search%")->orwhere('enrollment','LIKE',"$search%")->wherenotin('enrollment',$fenroll)->get();
             }
             else
             {
-                $friend = Student::where('enrollment','<>',session('enrollment'))->where('name','LIKE',"$search%")->orwhere('enrollment','LIKE',"$search%")->get();
+                $friend = Student::where('enrollment','<>',Session::get('enrollment'))->where('name','LIKE',"$search%")->orwhere('enrollment','LIKE',"$search%")->get();
             }
                
             }
             else{
                 if($enroll!=null)
             {
-                $friend=Student::where('enrollment','<>',session('enrollment'))->wherenotin('enrollment',$fenroll)->get();
+                $friend=Student::where('enrollment','<>',Session::get('enrollment'))->wherenotin('enrollment',$fenroll)->get();
             }
             else
             {
-                $friend=Student::where('enrollment','<>',session('enrollment'))->get();
+                $friend=Student::where('enrollment','<>',Session::get('enrollment'))->get();
             }
             }
             // $friend=Student::get()->toArray();
@@ -303,10 +304,10 @@ class students extends Controller
     
     }
     public function friendrequest($id){
-        if (session('role')=='Student') {
+        if (Session::get('role')=='Student') {
             $friend = new Friend;
             $friend->friend_id = $id;
-            $friend->friend_of_friend_id = session('enrollment');
+            $friend->friend_of_friend_id = Session::get('enrollment');
             $friend->status = "Pending";
             $friend->save(); 
 
@@ -316,7 +317,7 @@ class students extends Controller
     }
     public function studentskill()
     {
-        if (session('role')=='Student') {
+        if (Session::get('role')=='Student') {
             return view('Student.skill');
         }
         else
@@ -326,8 +327,8 @@ class students extends Controller
     }
     public function acceptfriend()
     {
-        if (session('role')=='Student') {
-            $enroll=Friend::where('friend_id',session('enrollment'))->where('status','Pending')->get('friend_of_friend_id')->toArray();
+        if (Session::get('role')=='Student') {
+            $enroll=Friend::where('friend_id',Session::get('enrollment'))->where('status','Pending')->get('friend_of_friend_id')->toArray();
             $i=0;
             if($enroll==null)
             {
@@ -360,9 +361,9 @@ class students extends Controller
     }
     public function createpdf()
     {
-        if (session('role')=='Student') {
-           $student=Student::where('enrollment',session('enrollment'))->get();
-           $certificate=Certificate::where('enrollment',session('enrollment'))->get();
+        if (Session::get('role')=='Student') {
+           $student=Student::where('enrollment',Session::get('enrollment'))->get();
+           $certificate=Certificate::where('enrollment',Session::get('enrollment'))->get();
            $data=compact('student','certificate');
            return view('Student.Resume')->with($data);
           
@@ -372,9 +373,9 @@ class students extends Controller
     }
     public function downloadpdf()
     {
-        if (session('role')=='Student') {
-        //    $student=Student::where('enrollment',session('enrollment'))->get();
-        //    $certificate=Certificate::where('enrollment',session('enrollment'))->get();
+        if (Session::get('role')=='Student') {
+        //    $student=Student::where('enrollment',Session::get('enrollment'))->get();
+        //    $certificate=Certificate::where('enrollment',Session::get('enrollment'))->get();
         //    $data=compact('student','certificate');
         // //    return view('Student.Resume')->with($data);
         // //    view()->share('Student.Resume',$data);

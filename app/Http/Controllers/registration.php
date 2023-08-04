@@ -8,6 +8,7 @@ use App\Models\Coordinator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class registration extends Controller
 {
@@ -121,13 +122,13 @@ class registration extends Controller
     }
     public function next()
     {
-        if(session()->has('role'))
+        if(Session::has('role'))
         {
-            if(session('role')=='Admin')
+            if(Session::get('role')=='Admin')
             {
                 return redirect('admin/admindashboard');
             }
-            else if(session('role')=='Student')
+            else if(Session::get('role')=='Student')
             {
                 return redirect('student/profile');
             }
@@ -151,9 +152,9 @@ class registration extends Controller
                 $student[$i]['email'])) && (Hash::check($request->Password,$student[$i]['password']))) {
                     $flag = 1;
                     $check = $student[$i]['status'];
-                    $request->session()->put('id',$student[$i]['student_id']);
-                    $request->session()->put('enrollment',$student[$i]['enrollment']);
-                    $request->session()->put('role',$request->choice );
+                    Session::put('id',$student[$i]['student_id']);
+                    Session::put('enrollment',$student[$i]['enrollment']);
+                    Session::put('role',$request->choice );
                 }
 
                 //  print_r($student[$i]);
@@ -184,7 +185,7 @@ class registration extends Controller
             $admin[0]['email'])) && (Hash::check($request->Password,$admin[0]['password'])))
             {
                 $flag=1;
-                $request->session()->put('role',$request->choice );
+                Session::put('role',$request->choice );
                 // return redirect('/admindashboard');
             }
             if ($flag == 1)
@@ -196,7 +197,7 @@ class registration extends Controller
             return back()->with('error', 'Invalid Credentials ');
             }
         }
-        else
+        else if($request->choice == 'Co-ordinator')
         {
             $coordinator=Coordinator::get()->toArray();
             print_r($coordinator);
@@ -204,10 +205,10 @@ class registration extends Controller
             for ($i = 0; $i < Coordinator::count(); $i++) { 
                 if ((($request->Enrollment == $coordinator[$i]['email'])) && (Hash::check($request->Password,$coordinator[$i]['password']))) {
                 $flag = 1;
-                $request->session()->put('id',$coordinator[$i]['co-ordinator_id']);
-                $request->session()->put('name',$coordinator[$i]['name']);
-                $request->session()->put('role',$request->choice );
-                $request->session()->put('department',$coordinator[$i]['department']);
+                Session::put('id',$coordinator[$i]['co-ordinator_id']);
+                Session::put('name',$coordinator[$i]['name']);
+                Session::put('role',$request->choice );
+                Session::put('department',$coordinator[$i]['department']);
                 }
 
                 // print_r($student[$i]);
@@ -229,12 +230,12 @@ class registration extends Controller
     }
     public function logout()
     {
-        session()->flush();
+        Session::flush();
         return redirect('/login');
     }
     public function forgetpassword()
     {
-        // session()->flush();
+        // Session::flush();
         return view('ForgetPassword');
     }
          
