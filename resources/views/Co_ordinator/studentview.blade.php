@@ -12,21 +12,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://kit.fontawesome.com/5014f23600.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/5014f23600.js" crossorigin="anonymous"></script>
-    <style>.fa-trash:hover{
-        color: red;
-    }
-    .fa-trash{
-        color: black;
-    }
-    .form-inline{
-        margin-left: 50em;
-        display: flex;
-    }
-    .btn
-    {
-        margin-left: 1em
-    }
-    </style>
+    
     <title>Co-ordinator| Student View</title>
 </head>
 
