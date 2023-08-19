@@ -26,58 +26,35 @@
 <body id="body-pd">
 
     @include('Admin/header')
-    <!--Container Main start-->
-    {{-- <script type="text/javascript">
-        $(document).ready(function() {
-            const sideBarItems = document.getElementById("side_bar_list")
-            $('a').click(function() {
-                console.log("inn")
-                console.log(sideBarItems);
-                // $(this).addClass('active').siblings().removeClass('active')
-                // alert("hello");
-                $('#new').addClass('active');
-                // event.preventDefault();
 
-            })
-        });
-    </script> --}}
-
-
-
-    <div class="height-30 bg-white dashboardbbox">
-        <h4></h4>
-        <div class="container">
-
-            <div class="b1">
-                <h4 class="b1letter">Co-ordinator</h4>
-                <i class="fa-solid fa-user fa-3x"></i>
-                <h4 class="b1count">{{ $count['department'] }}</h4>
+    <div class="container" style="margin-top:2em">
+        <div class="row">
+            <div class="col-lg-4" style="border:2px solid red;text-align:center">
+                <h4><i class="fa-solid fa-user"></i>  Co-ordinator</h4>
+                <h4>{{ $count['department'] }}</h4>
             </div>
-            <div class="b2">
-                <h4 class="b2letter">Department</h4>
-                <i class="fa-solid fa-building fa-3x"></i>
-                <h4 class="b2count">{{ $count['department'] }}</h4>
+            <div class="col-lg-4" style="border:2px solid red;text-align:center">
+                <h4><i class="fa-solid fa-building"></i>  Department</h4>
+                <h4>{{ $count['department'] }}</h4>
             </div>
-            <div class="b3">
-                <h4 class="b3letter">Student</h4>
-                <i class="fa-solid fa-users fa-3x"></i>
-                <h4 class="b3count">{{ $count['student'] }}</h4>
+            <div class="col-lg-4" style="border:2px solid red;text-align:center">
+                <h4><i class="fa-solid fa-users"></i>  Student</h4>
+                <h4>{{ $count['student'] }}</h4>
             </div>
-
+        </div>
+        <div class="row">
+            <div class="col-lg-6" style="border:2px solid red;text-align:center">
+                <h4><i class="fa-solid fa-trophy"></i>  Achievment</h4>
+                <h4>{{ $count['certificate'] }}</h4>
+            </div>
+            <div class="col-lg-6" style="border:2px solid red;text-align:center">
+                <h4><i class="fa-solid fa-sheet-plastic"></i>  Project</h4>
+                <h4>{{ $count['project'] }}</h4>
+            </div>
         </div>
     </div>
-    <div class=" height-30 bg-white container dashboard12">
-        <div class="b4">
-            <h4 class="b4letter"> Achievment</h4>
-            <i class="fa-solid fa-trophy fa-3x"></i>
-            <h4 class="b4count">{{ $count['certificate'] }}</h4>
-        </div>
-        <div class="b5">
-            <h4 class="b5letter">Project</h4>
-            <i class="fa-solid fa-sheet-plastic fa-3x"></i>
-            <h4 class="b5count">{{ $count['project'] }}</h4>
-        </div>
-    </div>
+
+
 
     <!--Container Main end-->
 </body>
