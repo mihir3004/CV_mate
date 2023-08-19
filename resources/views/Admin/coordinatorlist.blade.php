@@ -50,7 +50,9 @@
     @include('Admin/header')
     <!--Container Main start-->
 
+<div class="container">
 
+    <h2 style="margin-top:2em;text-align:center">Co-ordinator-List</h2>
     <div class="table">
         <table class="table table-striped" id="AdminTabel">
             <thead>
@@ -85,6 +87,7 @@
         </table>
        
     </div>
+</div>
 
     {{-- <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>

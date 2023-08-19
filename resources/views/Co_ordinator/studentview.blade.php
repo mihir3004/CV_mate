@@ -27,6 +27,9 @@
             <button class="btn btn-outline-success my-4 my-sm-0 button" type="submit">Search</button>
         </form>
     </nav> --}}
+    <div class="container">
+
+        <h2 style="margin-top:2em;text-align:center">Student View</h2>
     <div class="table">
         <table class="table table-striped" id="Co_or-Tabel">
             <thead>
@@ -73,6 +76,7 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
     </div>
     <!--Container Main end-->
     <script

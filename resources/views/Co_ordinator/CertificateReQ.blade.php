@@ -26,7 +26,9 @@
         <button name="btn_coordinator" id="btn_coordinator" type="button"
             class="btn btn-outline-success">search</button>
     </div> --}}
+    <div class="container">
 
+        <h2 style="margin-top:2em;text-align:center">Certificate Request</h2>
     <div class="table">
         <table class="table table-striped" id="Co_or-Tabel">
             <thead>
@@ -56,14 +58,13 @@
                     <td> <a href="/co-ordinator/viewpdf/{{$c['path']}}">{{$c['path']}}</a> </iframe></td>
                     <td><a href="{{ route('approve.ccertificate', ['id' => $c['certificate_id']]) }}"><i class="fa-solid fa-check fa-lg"></i></i></a></td>
                     <td><a href="{{ route('delete.ccertificate', ['id' => $c['certificate_id']]) }}"><i class="fa-solid fa-trash icon fa-lg "></i></a></td>
-                    
-                    
                 </tr>
                 <p hidden>{{$i++}}</p>
                 @endforeach
                 
             </tbody>
         </table>
+    </div>
     </div>
 
     <script

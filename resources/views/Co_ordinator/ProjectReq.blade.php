@@ -26,7 +26,9 @@
         <button name="btn_pro_req" id="btn_pro_req" type="button" class="btn btn-outline-success">search</button>
     </div> --}}
 
+    <div class="container">
 
+        <h2 style="margin-top:2em;text-align:center">Project Request</h2>
     <div class="table">
         <table class="table table-striped" id="Co_or-Tabel">
             <thead>
@@ -66,6 +68,7 @@
             </tbody>
            
         </table>
+    </div>
     </div>
     <script
     type="text/javascript"

@@ -30,7 +30,9 @@
             aria-label="Search" aria-describedby="search-addon" />
         <button name="btn_std_req" id="btn_std_req" type="button" class="btn btn-outline-success">Search</button>
     </div> --}}
+    <div class="container">
 
+        <h2 style="margin-top:2em;text-align:center">Student Request</h2>
     <div class="table">
         <table class="table table-striped" id="Co_or-Tabel">
             <thead>
@@ -66,6 +68,7 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
     </div>
 
     <script

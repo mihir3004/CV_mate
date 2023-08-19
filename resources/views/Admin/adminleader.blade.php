@@ -42,7 +42,8 @@
         <button class="btn btn-primary ">Search</button>
     </div> --}}
 
-
+    <div class="container">    
+        <h2 style="margin-top:2em;text-align:center">LeaderBoard</h2>
     <div class="table">
         <table class="table table-striped" id='AdminTabel'>
             <thead>
@@ -84,6 +85,7 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
     </div>
     <!--Container Main end-->
     <script

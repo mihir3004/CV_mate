@@ -57,6 +57,9 @@
         </div>
         
       </form> -->
+      <div class="container">
+
+        <h2 style="margin-top:2em;text-align:center">Create Co-ordinator</h2>
     <div class="create">
         <div class="m-4">
             <form action="{{ route('coordinator.list') }}" method="POST">
@@ -106,36 +109,17 @@
                             placeholder="Contact Number" required>
                     </div>
                 </div>
-                <!-- <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Department</label>
-        <div class="col-sm-10">
-            <select class="form-select">
-                <option>Default select</option>
-                <option>Default select</option>
-                <option>Default select</option>
-            </select>
-        </div>
-      </div> -->
                 <div class="row ">
 
                     <div class="col-sm-10 offset-sm-2 button">
-                        <button type="submit" id="submitButton"  class="btn btn-primary" onclick="fn()">Create</button>
+                        <button  type="submit" id="submitButton"  class="btn btn-primary">Create</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+</div>
 
-    <script>
-        function fn() {
-        // var w = window.open('', '', 'width=300,height=2px')
-        // w.document.write('Product has been added to your Order List !')
-
-        // w.focus()
-        // setTimeout(function () { w.close(); }, 2000);
-    }
-       </script>
-    <!--Container Main end-->
 </body>
 
 </html>

@@ -28,6 +28,9 @@
             <button class="btn btn-outline-success my-4 my-sm-0 button" type="submit">Search</button>
         </form> --}}
     {{-- </nav> --}}
+    <div class="container">
+
+        <h2 style="margin-top:2em;text-align:center">Student View</h2>
     <div class="table">
         <table class="table table-striped" id="AdminTabel">
             <thead>
@@ -37,7 +40,7 @@
                     <th scope="col">Enrollment</th>
                     <th scope="col">Email</th>
                     <th scope="col">Department</th>
-                    <th scope="col">Semester
+                    <th data-orderable="false" scope="col">Semester
                         <select name="semester" type="search">
                             <option value="All">All</option>
                             <option value="1">1</option>
@@ -73,6 +76,7 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
     </div>
 
     <script
