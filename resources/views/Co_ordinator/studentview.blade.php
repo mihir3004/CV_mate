@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://kit.fontawesome.com/5014f23600.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/5014f23600.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <title>Co-ordinator| Student View</title>
 </head>
-
+@include('sweetalert::alert')   
 @include('Co_ordinator/co_header')
 <body id="body-pd">
    
@@ -69,8 +70,8 @@
                         <td>{{ $s['Course'] }}</td>
                         <td>{{ $s['semester'] }}</td>
                         <td>{{ $s['status'] }}</td>
-                        <td><a href="{{ route('delete.cstudent', ['id' => $s['student_id']]) }}"><i
-                                    class="fa-solid fa-trash icon fa-lg " style="margin-left:1.1em"></i></a></td>
+                        <td><a onclick="return confirmation(event)" href="{{ route('delete.cstudent', ['id' => $s['student_id']]) }}"  ><i
+                             class="fa-solid fa-trash icon fa-lg " style="margin-left:1.1em"></i></a></td>
                     </tr>
                     <p hidden> {{ $i++ }}</p>
                 @endforeach
@@ -96,6 +97,43 @@ src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.mi
 $(function() {
 $("#Co_or-Tabel").dataTable();
 });
+
+$("a").click(function(e)
+
+{
+    e.preventDefault();
+})
+
+
+function confirmation(event)
+{
+    // return false;
+    // event.preventDefault();
+    var url=event.currentTarget.getAttribute('href');
+    console.log(url);
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, You will not be able to recover the data",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        closeOnConfirm:false
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            window.location=url;
+           
+            swal("Student data has been deleted!", {
+                icon: "success",
+                
+            });
+        } else {
+            // swal("Your imaginary file is safe!");
+            event.preventDefault();
+        }
+    })
+}
+
 </script>
 </body>
 
